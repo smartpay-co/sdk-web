@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "description": "Smartpay SDK Web",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "scripts": {
     "format": "prettier --write 'src/**/*.ts'",
     "build": "tsc --build tsconfig.json",
