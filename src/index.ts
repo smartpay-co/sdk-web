@@ -8,7 +8,7 @@ import type {
 import { isValidPublicApiKey } from './utils.js';
 
 const API_PREFIX = 'https://api.smartpay.co/checkout';
-const CHECKOUT_URL = 'https://checkout.smartpay.ninja';
+const CHECKOUT_URL = 'https://checkout.smartpay.co';
 
 class Smartpay {
   _publicKey: KeyString;
