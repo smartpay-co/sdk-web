@@ -1,5 +1,5 @@
 {
-  "name": "smartpay-sdk-web",
+  "name": "@smartpay/sdk-web",
   "type": "module",
   "version": "0.0.1",
   "description": "Smartpay SDK Web",
@@ -19,7 +19,7 @@
     "sdk",
     "node"
   ],
-  "author": "Smartpay",
+  "author": "Smartpay Co. Ltd.",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/smartpay-co/sdk-web/issues"
