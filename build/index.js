@@ -1,7 +1,7 @@
 import qs from 'query-string';
 import { isValidPublicApiKey } from './utils.js';
 var API_PREFIX = 'https://api.smartpay.co/checkout';
-var CHECKOUT_URL = 'https://checkout.smartpay.ninja';
+var CHECKOUT_URL = 'https://checkout.smartpay.co';
 var Smartpay = /** @class */ (function () {
     function Smartpay(key, options) {
         if (options === void 0) { options = {}; }
