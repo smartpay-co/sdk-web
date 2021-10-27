@@ -7,12 +7,10 @@ import type {
 } from './types';
 import { isValidPublicApiKey } from './utils.js';
 
-const API_PREFIX = 'https://api.smartpay.co/checkout';
 const CHECKOUT_URL = 'https://checkout.smartpay.co';
 
 class Smartpay {
   _publicKey: KeyString;
-  _apiPrefix: string;
   _checkoutURL: string;
 
   constructor(key: KeyString, options: SmartPayOptions = {}) {
@@ -25,7 +23,6 @@ class Smartpay {
     }
 
     this._publicKey = key;
-    this._apiPrefix = options.apiPrefix || API_PREFIX;
     this._checkoutURL = options.checkoutURL || CHECKOUT_URL;
   }
 
