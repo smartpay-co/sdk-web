@@ -20,6 +20,6 @@ test('Get Session URL', function testGetSessionURL(t) {
   const sessionURL = smartpay.getSessionURL(FAKE_SESSION);
 
   t.ok(sessionURL.indexOf(CHECKOUT_URL) === 0);
-  t.ok(sessionURL.indexOf(`key=${TEST_PUBLIC_KEY}`) > 0);
-  t.ok(sessionURL.indexOf(`session=${FAKE_SESSION.id}`) > 0);
+  t.ok(sessionURL.indexOf(`public-key=${TEST_PUBLIC_KEY}`) > 0);
+  t.ok(sessionURL.indexOf(`session-id=${FAKE_SESSION.id}`) > 0);
 });
