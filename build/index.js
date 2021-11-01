@@ -1,6 +1,5 @@
 import qs from 'query-string';
 import { isValidPublicApiKey } from './utils.js';
-var API_PREFIX = 'https://api.smartpay.co/checkout';
 var CHECKOUT_URL = 'https://checkout.smartpay.co';
 var Smartpay = /** @class */ (function () {
     function Smartpay(key, options) {
@@ -12,7 +11,6 @@ var Smartpay = /** @class */ (function () {
             throw new Error('Public API Key is invalid.');
         }
         this._publicKey = key;
-        this._apiPrefix = options.apiPrefix || API_PREFIX;
         this._checkoutURL = options.checkoutURL || CHECKOUT_URL;
     }
     Smartpay.prototype.getSessionURL = function (session) {
@@ -23,8 +21,8 @@ var Smartpay = /** @class */ (function () {
             throw new Error('Public API Key is required.');
         }
         var params = {
-            session: session.id,
-            key: this._publicKey,
+            'session-id': session.id,
+            'public-key': this._publicKey,
         };
         return qs.stringifyUrl({
             url: this._checkoutURL + "/login",
