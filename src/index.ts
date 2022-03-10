@@ -4,6 +4,8 @@ import type {
   KeyString,
   SmartPayOptions,
   CheckoutSessionResult,
+  GetSessionUrlOptions,
+  SessionUrlParams,
 } from './types';
 import { isValidPublicApiKey } from './utils.js';
 
@@ -26,32 +28,33 @@ class Smartpay {
     this._checkoutURL = options.checkoutURL || CHECKOUT_URL;
   }
 
-  getSessionURL(session: CheckoutSessionResult): string {
+  static getSessionURL(
+    session: CheckoutSessionResult,
+    options: GetSessionUrlOptions = {}
+  ): string {
     if (!session) {
       throw new Error('Checkout Session is required.');
     }
 
-    if (!this._publicKey) {
-      throw new Error('Public API Key is required.');
+    const { promotionCode } = options;
+    const params: SessionUrlParams = {};
+
+    if (promotionCode) {
+      params['promotion-code'] = promotionCode;
     }
 
-    const params = {
-      'session-id': session.id,
-      'public-key': this._publicKey,
-    };
-
     return qs.stringifyUrl({
-      url: `${this._checkoutURL}/login`,
+      url: session.url,
       query: params,
     });
   }
 
-  launchCheckout(session: CheckoutSessionResult) {
+  static launchCheckout(session: CheckoutSessionResult, options = {}) {
     if (!session) {
       throw new Error('Session required');
     }
 
-    document.location.href = session.checkoutURL || this.getSessionURL(session);
+    document.location.href = Smartpay.getSessionURL(session, options);
   }
 }
 

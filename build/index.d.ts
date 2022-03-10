@@ -1,9 +1,9 @@
-import type { KeyString, SmartPayOptions, CheckoutSessionResult } from './types';
+import type { KeyString, SmartPayOptions, CheckoutSessionResult, GetSessionUrlOptions } from './types';
 declare class Smartpay {
     _publicKey: KeyString;
     _checkoutURL: string;
     constructor(key: KeyString, options?: SmartPayOptions);
-    getSessionURL(session: CheckoutSessionResult): string;
-    launchCheckout(session: CheckoutSessionResult): void;
+    static getSessionURL(session: CheckoutSessionResult, options?: GetSessionUrlOptions): string;
+    static launchCheckout(session: CheckoutSessionResult, options?: {}): void;
 }
 export default Smartpay;

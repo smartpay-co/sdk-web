@@ -42,6 +42,12 @@ export declare type ChekoutSessionPayload = {
 };
 export declare type CheckoutSessionResult = {
     id: string;
-    checkoutURL: string;
+    url: string;
+};
+export declare type GetSessionUrlOptions = {
+    promotionCode?: string;
+};
+export declare type SessionUrlParams = {
+    'promotion-code'?: string;
 };
 export {};

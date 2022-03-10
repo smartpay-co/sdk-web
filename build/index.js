@@ -13,27 +13,27 @@ var Smartpay = /** @class */ (function () {
         this._publicKey = key;
         this._checkoutURL = options.checkoutURL || CHECKOUT_URL;
     }
-    Smartpay.prototype.getSessionURL = function (session) {
+    Smartpay.getSessionURL = function (session, options) {
+        if (options === void 0) { options = {}; }
         if (!session) {
             throw new Error('Checkout Session is required.');
         }
-        if (!this._publicKey) {
-            throw new Error('Public API Key is required.');
+        var promotionCode = options.promotionCode;
+        var params = {};
+        if (promotionCode) {
+            params['promotion-code'] = promotionCode;
         }
-        var params = {
-            'session-id': session.id,
-            'public-key': this._publicKey,
-        };
         return qs.stringifyUrl({
-            url: this._checkoutURL + "/login",
+            url: session.url,
             query: params,
         });
     };
-    Smartpay.prototype.launchCheckout = function (session) {
+    Smartpay.launchCheckout = function (session, options) {
+        if (options === void 0) { options = {}; }
         if (!session) {
             throw new Error('Session required');
         }
-        document.location.href = session.checkoutURL || this.getSessionURL(session);
+        document.location.href = Smartpay.getSessionURL(session, options);
     };
     return Smartpay;
 }());
